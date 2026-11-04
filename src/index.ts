@@ -1,0 +1,52 @@
+import './styles/index.css';
+import { VFSUIShell, type VFSUIShellOptions } from './shell/VFSUIShell';
+import type { IFileSystem } from '@itookit/vfs-core';
+export type VFSUIOptions = VFSUIShellOptions;
+export const createVFSUI = (options: VFSUIOptions, fs: IFileSystem): VFSUIShell => new VFSUIShell(options, fs);
+export { VFSUIShell };
+export { VFSService } from './services/VFSService';
+export type { FileTypeDefinition } from './services/FileTypeRegistry';
+export * from './contracts/types';
+export { createLocalStorageUIPersistence, readUISnapshot, uiSnapshot, UI_STATE_VERSION, type UISnapshot, type RestoredUISnapshot, type UIPersistencePort } from './contracts/persistence';
+export type { FileCreationConfig, DirectoryAction, DirectoryPreviewOptions, VFSRowActionOptions } from './contracts/options';
+export type { VFSColumnsOptions } from './shell/ColumnLayout';
+export type { VFSToolbarOptions, VFSToolbarContext, VFSToolbarAction, VFSActionDefinition, VFSActionContext, VFSActionPlacement } from './ui/components/NodeList/toolbar';
+
+export { createVFSBrowser, VFSBrowser, type BrowserOptions } from './browser/Browser';
+export { fromVFS, type VFSDataOptions } from './browser/from-vfs';
+export type { BrowserNode, BrowserSource, ResourceRef, SourceChange } from './contracts/source';
+export type { BrowserAction, ActionContext } from './browser/actions';
+
+export { createDeleteOperation, type DeleteResult, type DeleteBatch, type DeletePlan, type DeleteOperationOptions } from './interaction/deletion';
+export { createSelectionOperation, type OperationResult, type OperationBatch, type SelectionPlan, type SelectionOperationOptions } from './interaction/selection-operation';
+export { createMoveOperation, type MoveRequest, type MovePlan, type MoveOperationOptions } from './interaction/movement';
+
+export { filterGitignoredFiles } from './utils/gitignore-visibility';
+export { formatFileSize } from './utils/file-size';
+export { formatDisplayLabel } from './utils/display-label';
+export { describeCauseChain, describeErrorReason } from './utils/error-detail';
+
+export { allowsRowAction } from './utils/row-policy';
+
+export { createPresentation } from './contracts/presentation';
+export type { VFSPresentationOptions, VFSPresentation, VFSIconName } from './contracts/presentation';
+export type { Translate } from './utils/i18n';
+export type { Suggestion, IAutocompleteSource, TagEditorInstance, ResourceListOptions, VFSListAppearance } from './contracts/components';
+export { VFS_DOM_EVENTS } from './contracts/events';
+export type { PublicEventMap, PublicEventName, PublicEventPayload } from './contracts/events';
+export { EngineTagSource } from './mention/EngineTagSource';
+
+export { ScopeSelector, type ScopeOption, type ScopeSelectorOptions } from './ui/components/ScopeSelector';
+export { Drawer, type DrawerOptions, type DrawerSearchOptions } from './ui/components/Drawer';
+export {createWindowManagement, type WindowManagementOptions} from './ui/components/WindowManagement';
+export {Sidebar, type SidebarOptions, type SidebarState} from './ui/components/Sidebar';
+export {FilterPanel, type FilterPanelOptions, type FilterChip} from './ui/components/FilterPanel';
+
+export {createDirectoryList, refreshDirectoryList, refreshDirectorySelection, relocateDirectoryList} from './directory/directory-list';
+export type {DirectoryEntry, DirectoryListOptions, DirectorySortKey} from './directory/directory-list';
+export type {DirectoryBulkAction} from './directory/directory-selection';
+export {createDirectoryBreadcrumbs} from './directory/directory-breadcrumbs';
+export type {DirectoryBreadcrumb} from './directory/directory-breadcrumbs';
+export type {DirectoryLabel, DirectoryPresentationOptions} from './directory/presentation';
+
+export type {BrowserDeletion, BrowserDeletionPreview} from './browser/deletion';

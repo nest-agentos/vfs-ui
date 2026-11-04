@@ -1,0 +1,45 @@
+import type { ResourceListOptions } from './components';
+import type { FavoriteAction, VFSNodeUI } from './types';
+export type { FileCreationConfig } from './components';
+export type BrowserBaseOptions = ResourceListOptions<VFSNodeUI>;
+
+/** A strict directory preview whose overflow opens a host-owned view. */
+export interface DirectoryPreviewOptions {
+    readonly limit: number;
+    readonly moreLabel: string;
+    open(directory: VFSNodeUI): void | Promise<void>;
+}
+
+/** A fixed navigation action; its active state is independent of mutable resource selection. */
+export interface DirectoryAction {
+    /** Insert after the direct child with this resource ID; falls back to the end. */
+    afterChildId?: (parentPath: string) => string | undefined;
+    label: string;
+    /** Trusted icon markup supplied by the host. */
+    icon?: string;
+    placement?: 'after-first';
+    active?(path: string): boolean;
+    visible(path: string): boolean;
+    disabled?(path: string): boolean;
+    run(path: string): Promise<void>;
+}
+
+/** Host-owned row actions shared by the shell and the list that renders them. */
+export interface VFSRowActionOptions {
+    /** Host authorization for source and destination identities (rechecked by the transfer service). */
+    transferPolicy?: {
+        /** Independent destination catalog; parent omitted lists roots. */
+        targets?(ids: string[], mode: 'copy' | 'move', parent?: string): Promise<VFSNodeUI[]>;
+        source(node: VFSNodeUI, mode: 'copy' | 'move'): boolean;
+        destination(node: VFSNodeUI | null, ids: string[], mode: 'copy' | 'move'): boolean;
+    };
+    transferItems?: (mode: 'copy' | 'move', ids: string[], destination: string | null) => Promise<void>;
+    /** Inline creation controls on writable directory rows; the host owns the target semantics. */
+    rowCreation?: { visible(node: VFSNodeUI): boolean; run(node: VFSNodeUI, type: 'file' | 'directory'): Promise<void> };
+    /** Favorite state and toggle; rows without state hide the control. */
+    favoriteAction?: FavoriteAction;
+    /** Replaces the inline second-click confirmation. False cancels deletion. */
+    confirmDelete?: (node: VFSNodeUI) => Promise<boolean>;
+    /** Host deletion for entries that declare `presentation.quickDelete`, after inline confirmation. */
+    onQuickDelete?: (node: VFSNodeUI) => Promise<void>;
+}

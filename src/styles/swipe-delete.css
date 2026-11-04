@@ -1,0 +1,18 @@
+/* Native vertical panning stays available; horizontal gestures reveal a shared action. */
+.vfs-node-item__main-row--swipe { touch-action: pan-y pinch-zoom; position: relative; overflow: hidden; }
+.vfs-node-item__main-row--swipe-open { padding-right: 56px !important; }
+.vfs-node-item__swipe-delete:not([hidden]) {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    opacity: 1;
+    background: var(--color-danger-light, #fee2e2);
+    color: var(--color-danger-default, #dc2626);
+}
+.vfs-node-item__swipe-delete[hidden] { display: none; }
+.vfs-node-item__swipe-delete:focus-visible { outline: 2px solid currentColor; outline-offset: -2px; }
+/* While revealed, use one visible confirmation control for this row. */
+.vfs-node-item__main-row--swipe-open .vfs-node-item__delete-btn:not([data-swipe-delete]) { visibility: hidden; }

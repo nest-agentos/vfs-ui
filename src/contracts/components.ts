@@ -1,0 +1,50 @@
+import type { VFSNodeUI } from './types';
+
+/** Public component ports; hosts own their implementations and lifetimes. */
+export interface Suggestion { id: string; label: string; type?: string; [key: string]: unknown; }
+export interface IAutocompleteSource { getSuggestions(query: string): Promise<Suggestion[]>; }
+export interface TagEditorOptions { container: HTMLElement; initialTags: string[]; onSave(tags: string[]): void; onCancel(): void; }
+export interface TagEditorInstance { destroy?(): void; }
+export type TagEditorFactory = (options: TagEditorOptions) => TagEditorInstance | void;
+export type MenuItem<T extends object = VFSNodeUI> = { type: 'separator' } | {
+    id: string; label: string; iconHTML?: string; iconOnly?: boolean; disabled?: boolean; danger?: boolean; type?: 'item';
+    hidden?(item: T): boolean; onClick?(item: T): void | Promise<void>;
+};
+export type ContextMenuBuilder<T extends object = VFSNodeUI> = (item: T, defaults: MenuItem<T>[]) => MenuItem<T>[];
+export interface ContextMenuConfig<T extends object = VFSNodeUI> {
+    /** Present individually resolved resources consistently with list projections. */
+    mapItem?(item: T): T;
+    items?: ContextMenuBuilder<T>; bulkItems?(items: T[], defaults: MenuItem<T>[]): MenuItem<T>[];
+}
+export interface FileCreationConfig {
+    resolveParent?(path: string | null): string | null;
+    label?: string; title?: string; content?: string;
+    startupFileName?: string; startupContent?: string; instant?: boolean;
+}
+/** Instance display choices; component markup and responsive styling stay private. */
+export interface VFSListAppearance {
+    /** Hide the standard title when a surrounding host header already names the list. */
+    showTitle?: boolean;
+    showTimestamp?: boolean;
+    menuVisibility?: 'hover' | 'always';
+}
+/** Optional slots for a two-row scope/actions and search/filter navigator. */
+export interface VFSNavigationHeader {
+    /** Place primary and overflow actions beside search instead of in the title row. */
+    layout?: 'stacked' | 'inline';
+    /** Inline search temporarily moves actions into the menu while focused. Defaults to true. */
+    expandSearch?: boolean;
+    primaryAction?: string;
+    filter?: HTMLElement;
+    summary?: HTMLElement;
+    results?: HTMLElement;
+    menu?: { root: HTMLDetailsElement; content: HTMLElement };
+}
+export interface ResourceListOptions<T extends object = VFSNodeUI> {
+    sessionListContainer: HTMLElement; documentOutlineContainer?: HTMLElement; initialState?: object;
+    contextMenu?: ContextMenuConfig<T>; readOnly?: boolean; initialSidebarCollapsed?: boolean;
+    title?: string; searchPlaceholder?: string; fileCreation?: FileCreationConfig;
+    appearance?: VFSListAppearance;
+    windowManagement?: import('../ui/components/WindowManagement').WindowManagementOptions;
+    components?: { tagEditor?: TagEditorFactory };
+}
