@@ -8,6 +8,8 @@ export interface DirectoryPreviewOptions {
     readonly limit: number;
     readonly moreLabel: string;
     open(directory: VFSNodeUI): void | Promise<void>;
+    /** Fetch a bounded preview beside storage, including one overflow sentinel if needed. */
+    read?(directory: VFSNodeUI): Promise<import('@nestos/vfs-core').FSNode[]>;
 }
 
 /** A fixed navigation action; its active state is independent of mutable resource selection. */

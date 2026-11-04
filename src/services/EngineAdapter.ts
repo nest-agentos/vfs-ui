@@ -10,6 +10,7 @@ import type { VFSNodeUI, TagInfo } from '../contracts/types';
 import { mapFSNodeToUIItem, mapFSNodesToUIItems } from './NodeMapper';
 import { findNodeById, shouldFilterNode, traverseNodes } from '../utils/helpers';
 import { adapterDEBUG } from '../utils/adapter-debug';
+import type {DirectoryPreviewOptions} from '../contracts/options';
 
 type ExpansionOptions = { restoreDescendants?: boolean; expand?: boolean; restoreOnly?: boolean; throwOnError?: boolean };
 
@@ -38,10 +39,14 @@ export class EngineAdapter {
         // Host-projected rows may have identities outside the filesystem tree.
         private readonly reconcilePaths = true,
         private readonly navigationChildren?: (node: VFSNodeUI) => string[],
+        private readonly directoryPreview?: (node: VFSNodeUI) => number | DirectoryPreviewOptions | undefined,
     ) { }
 
     private async displayedChildren(path: string): Promise<FSNode[]> {
-        const nodes = await this.engine.driver.getChildren(path) as FSNode[];
+        const node = findNodeById(this.store.getState().items, path);
+        const preview = node && this.directoryPreview?.(node);
+        const nodes = typeof preview === 'object' && preview.read ? await preview.read(node!)
+            : await this.engine.driver.getChildren(path) as FSNode[];
         return this.hideGitignored ? filterGitignoredFiles(this.engine, nodes) : nodes;
     }
 

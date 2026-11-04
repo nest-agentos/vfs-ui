@@ -48,3 +48,12 @@ it('opens exactly one confirmation from a logical resource row, without the inli
         expect(document.querySelector('dialog')).toBeNull();
     } finally {browser.destroy();}
 });
+it('keeps technical diagnostics in a collapsed, text-only details section', async () => {
+    modal(); const abort = new AbortController();
+    const work = deleteBrowserResource({label: 'Delete', cancelLabel: 'Cancel',
+        preview: async () => ({message: 'Readable summary', details: {label: 'Diagnostics', text: '<script>technical-id</script>'}}), remove: vi.fn()}, node, abort.signal);
+    await vi.waitFor(() => expect(document.querySelector('details')).not.toBeNull());
+    const details = document.querySelector('details')!;
+    expect(details.open).toBe(false); expect(details.textContent).toContain('technical-id'); expect(details.querySelector('script')).toBeNull();
+    abort.abort(); await work;
+});

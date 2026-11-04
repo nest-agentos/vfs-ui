@@ -84,3 +84,7 @@ inline 搜索聚焦时由 ToolbarOverflow 将原按钮与筛选槽临时移入�
 - `directory/` 提供不绑定文件系统的通用目录内容页、工具栏、多选、面包屑和列宽调整；通过 `createDirectoryList` 注入资源、搜索、动作、展示及诊断端口。项目/Session 类型、业务路径、文件变更订阅及窗口生命周期留在宿主。表格最后一列为创建时间，窄屏横向滚动保留所有列。样式归 `styles/directory.css`。
 
 删除确认按入口只执行一次：行内提供 confirmDelete(node):Promise<boolean> 时，它替代默认的第二次行内点击；返回 false 不调用删除。未提供时保留默认两次点击。onQuickDelete 只承担已确认后的资源生命周期。createVFSBrowser 的 deletion 提供资源预检和删除端口，deletion.confirm 可替代默认的共享确认弹窗（返回选择集合，undefined 取消）；行内和菜单共用预检与确认，不叠加两种确认。BrowserNode.deletable 显式开放逻辑资源的生命周期删除，不创建重复文件正文。
+
+严格 `directoryPreview` 可注入 `read(directory)` 获取已筛选、排序的有界预览；EngineAdapter 仅在需要读取该目录时调用，未打开目录不读取。宿主提供最多 limit+1 项判断溢出，完整页面仍按原目录身份读取全部/分页内容；库不推导应用的存储查询。
+
+BrowserDeletionPreview.details accepts optional plain-text diagnostics with a caller-provided label. Default confirmation renders them in a collapsed details element using textContent; business providers supply names and explanations without replacing the shared confirmation flow.

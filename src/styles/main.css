@@ -1611,3 +1611,4 @@
 .vfs-resource-deletion::backdrop { background: rgb(0 0 0 / 35%); }
 
 .vfs-resource-deletion button { min-height: 44px; padding: .5rem 1rem; font: inherit; }
+.vfs-resource-deletion summary { cursor: pointer; padding-block: .5rem; }

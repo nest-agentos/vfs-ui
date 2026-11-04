@@ -2,6 +2,7 @@ import {createDeleteOperation} from '../interaction/deletion';
 import type {BrowserNode} from '../contracts/source';
 export interface BrowserDeletionPreview {
   message: string; blocked?: boolean;
+  details?: {label: string; text: string};
   choices?: ReadonlyArray<{id: string; label: string; checked?: boolean}>;
   data?: unknown;
 }
@@ -35,6 +36,11 @@ export function confirmResourceDeletion(port: Pick<BrowserDeletion, 'label' | 'c
     const dialog = document.createElement('dialog'), message = document.createElement('p'), actions = document.createElement('div');
     const previousFocus = document.activeElement;
     dialog.className = 'vfs-resource-deletion'; dialog.setAttribute('aria-label', port.label); message.textContent = preview.message; dialog.append(message);
+    if (preview.details) {
+      const details = document.createElement('details'), summary = document.createElement('summary'), content = document.createElement('p');
+      summary.textContent = preview.details.label; content.textContent = preview.details.text;
+      details.append(summary, content); dialog.append(details);
+    }
     const inputs = (preview.choices ?? []).map(choice => {
       const label = document.createElement('label'), input = document.createElement('input');
       input.type = 'checkbox'; input.checked = choice.checked === true; input.value = choice.id;

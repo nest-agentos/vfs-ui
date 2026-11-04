@@ -162,3 +162,23 @@ it('deduplicates overflow navigation and enables a replaced control after a repo
         expect(host.querySelectorAll('[data-item-id="/files"] [data-item-type="file"]')).toHaveLength(1);
     } finally {ui.destroy(); await manager.dispose();}
 });
+
+it('loads strict previews through the bounded source and leaves unopened directories unread', async () => {
+    const {manager} = await createVFS({rootBackend: new MemoryBackend()}), fs = await manager.openFileSystem('/');
+    await fs.driver.createDirectory({name: 'rows'}); await fs.driver.createDirectory({name: 'closed'});
+    const all = Array.from({length: 16}, (_, i) => ({path: `/rows/${i}`, parentPath: '/rows', name: String(i), type: 'file' as const,
+        version: 1, createdAt: 1, modifiedAt: 100 - i, size: 0, tags: [], metadata: {}}));
+    const read = vi.fn(async () => all), open = vi.fn();
+    const getChildren = vi.spyOn(fs.driver, 'getChildren');
+    const host = document.createElement('div'); document.body.append(host);
+    const ui = createVFSUI({sessionListContainer: host, scopeId: 'bounded-preview', autoSelectFirst: false, hideGitignored: false,
+        sort: {by: 'lastModified'}, directoryPreview: node => node.id === '/rows' ? {limit: 15, moreLabel: 'More', read, open} : undefined}, fs) as VFSUIShell;
+    try {
+        await ui.start(); expect(read).not.toHaveBeenCalled();
+        await ui.expandPath('/rows'); expect(read).toHaveBeenCalledOnce();
+        expect(getChildren.mock.calls.every(([path]) => path === '/')).toBe(true);
+        expect(host.querySelectorAll('[data-item-id="/rows"] [data-item-type="file"]')).toHaveLength(15);
+        host.querySelector<HTMLButtonElement>('[data-preview-id="/rows"]')!.click();
+        await vi.waitFor(() => expect(open).toHaveBeenCalledOnce());
+    } finally {ui.destroy(); await manager.dispose();}
+});
