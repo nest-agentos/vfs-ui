@@ -1,7 +1,7 @@
 /**
  * Shared test fixtures and mock factories for vfs-ui tests.
  */
-import type { FSNode as EngineNode, FSEventType as EngineEventType, FSEvent as EngineEvent } from '@itookit/vfs-core';
+import type { FSNode as EngineNode, FSEventType as EngineEventType, FSEvent as EngineEvent } from '@nestos/vfs-core';
 import type { IFileTypePort } from '../../src/contracts/ports';
 import type { VFSNodeUI } from '../../src/contracts/types';
 

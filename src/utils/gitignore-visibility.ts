@@ -1,4 +1,4 @@
-import { FileIgnoreFilter, createVFSFileDiscoverySource, type IFileSystem, type FSNode } from '@itookit/vfs-core';
+import { FileIgnoreFilter, createVFSFileDiscoverySource, type IFileSystem, type FSNode } from '@nestos/vfs-core';
 
 /** Presentation only: no built-in exclusions, no changes to raw VFS or tool access. */
 export function createGitignoreVisibility(fs: IFileSystem, signal?: AbortSignal, boundary?: string) {

@@ -4,8 +4,8 @@
  */
 import type { CommandBus } from '../CommandBus';
 import type { VFSService } from '../../services/VFSService';
-import type { IFileSystem } from '@itookit/vfs-core';
-import { serialize } from '@itookit/vfs-core';
+import type { IFileSystem } from '@nestos/vfs-core';
+import { serialize } from '@nestos/vfs-core';
 
 export interface ExportItemResult { name: string; content: BlobPart; mimeType?: string; }
 export interface ExportCommandOptions {

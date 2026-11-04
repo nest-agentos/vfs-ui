@@ -1,5 +1,5 @@
 import { filterGitignoredFiles } from '../utils/gitignore-visibility';
-import { normalizeVirtualPath, type FSNode, type IFileSystem } from '@itookit/vfs-core';
+import { normalizeVirtualPath, type FSNode, type IFileSystem } from '@nestos/vfs-core';
 import type { BrowserNode, BrowserSource } from '../contracts/source';
 
 export interface VFSDataOptions { hideGitignored?: boolean; root?: string; include?: (node: FSNode) => boolean }

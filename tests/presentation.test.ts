@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { afterEach, expect, it, vi } from 'vitest';
 import { createVFSUI, createVFSBrowser, type BrowserSource } from '../src';
-import { createVFS, MemoryBackend } from '@itookit/vfs-core';
+import { createVFS, MemoryBackend } from '@nestos/vfs-core';
 
 const close: Array<() => void | Promise<void>> = [];
 afterEach(async () => { for (const cleanup of close.splice(0).reverse()) await cleanup(); document.body.replaceChildren(); });

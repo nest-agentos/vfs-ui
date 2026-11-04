@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { afterEach, expect, it, vi } from 'vitest';
-import { createVFS, MemoryBackend } from '@itookit/vfs-core';
+import { createVFS, MemoryBackend } from '@nestos/vfs-core';
 import { createVFSUI, createLocalStorageUIPersistence, readUISnapshot, uiSnapshot, type UIPersistencePort, type VFSUIShell } from '../src';
 
 afterEach(() => { document.body.replaceChildren(); vi.unstubAllGlobals(); });

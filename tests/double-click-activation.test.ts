@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { expect, it, vi } from 'vitest';
-import { createVFS, MemoryBackend } from '@itookit/vfs-core';
+import { createVFS, MemoryBackend } from '@nestos/vfs-core';
 import { createVFSUI, type VFSUIShell } from '../src';
 
 it('selects a project on one click, activates on double-click and keeps fold controls independent', async () => {

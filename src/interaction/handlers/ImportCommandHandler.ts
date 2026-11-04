@@ -6,8 +6,8 @@
 import type { CommandBus } from '../CommandBus';
 import type { IStatePort } from '../../contracts/ports';
 import type { VFSService } from '../../services/VFSService';
-import { deserialize, decodeContent } from '@itookit/vfs-core';
-import type { VFSExportManifest, VFSExportAsset } from '@itookit/vfs-core';
+import { deserialize, decodeContent } from '@nestos/vfs-core';
+import type { VFSExportManifest, VFSExportAsset } from '@nestos/vfs-core';
 import type { FileCreationConfig } from '../../contracts/options';
 import { resolveWritableParent } from '../../utils/creation-guard';
 

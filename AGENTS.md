@@ -1,4 +1,4 @@
-# @itookit/vfs-ui
+# @nestos/vfs-ui
 
 文件/资源浏览 UI — `createVFSBrowser`、`VFSUIShell`、`VFSService`、数据源与动作契约。
 
@@ -7,9 +7,9 @@
 ## 命令
 
 ```bash
-pnpm --filter @itookit/vfs-ui build        # vite build
-pnpm --filter @itookit/vfs-ui dev          # vite build --watch
-pnpm --filter @itookit/vfs-ui test         # vitest run
+pnpm --filter @nestos/vfs-ui build        # vite build
+pnpm --filter @nestos/vfs-ui dev          # vite build --watch
+pnpm --filter @nestos/vfs-ui test         # vitest run
 ```
 
 ## 结构

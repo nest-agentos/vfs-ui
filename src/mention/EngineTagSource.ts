@@ -3,7 +3,7 @@
  * @desc A generic tag autocomplete source that works with any IFSEngine.
  */
 import type { Suggestion } from '../contracts/components';
-import type { IFileSystem } from '@itookit/vfs-core';
+import type { IFileSystem } from '@nestos/vfs-core';
 
 interface TagData {
     name: string;

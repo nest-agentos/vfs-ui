@@ -1,5 +1,5 @@
 import { it, expect } from 'vitest';
-import { createVFS, MemoryBackend } from '@itookit/vfs-core';
+import { createVFS, MemoryBackend } from '@nestos/vfs-core';
 import { filterGitignoredFiles } from '../src/utils/gitignore-visibility';
 import { fromVFS } from '../src/browser/from-vfs';
 

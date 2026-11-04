@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { afterEach, beforeEach, expect, it, vi } from 'vitest';
-import { createVFS, MemoryBackend } from '@itookit/vfs-core';
+import { createVFS, MemoryBackend } from '@nestos/vfs-core';
 import { createVFSUI, type FavoriteAction, type VFSNodeUI, type VFSUIShell } from '../src';
 
 beforeEach(() => {

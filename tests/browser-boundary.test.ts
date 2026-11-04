@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { afterEach, expect, it, vi } from 'vitest';
 import { createVFSBrowser, createVFSUI, fromVFS, type ActionContext, type BrowserAction, type BrowserNode, type BrowserSource } from '../src';
-import { createVFS, MemoryBackend } from '@itookit/vfs-core';
+import { createVFS, MemoryBackend } from '@nestos/vfs-core';
 import { ActionRunner } from '../src/interaction/ActionRunner';
 import { CommandBus } from '../src/interaction/CommandBus';
 

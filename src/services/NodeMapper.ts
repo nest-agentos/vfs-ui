@@ -3,7 +3,7 @@ import { fileTypeIcon } from '../utils/local';
  * @file vfs-ui/services/NodeMapper.ts
  * @desc Maps FSNode → VFSNodeUI. Pure functions, no side effects.
  */
-import type { FSNode } from '@itookit/vfs-core';
+import type { FSNode } from '@nestos/vfs-core';
 import type { VFSNodeUI } from '../contracts/types';
 import type { IconResolver, ContentParserResolver } from './FileTypeRegistry';
 import { shouldFilterNode, stripExtension, getExtension } from '../utils/helpers';

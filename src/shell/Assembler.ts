@@ -7,7 +7,7 @@ import { SourceAdapter } from '../browser/SourceAdapter';
  *       职责：创建实例、注入依赖、连接生命周期。
  *       不承担任何业务逻辑或公共 API。
  */
-import type { IFileSystem } from '@itookit/vfs-core';
+import type { IFileSystem } from '@nestos/vfs-core';
 import type { IStatePort, ICommandPort, IEventPort, IFileTypePort } from '../contracts/ports';
 
 import { VFSStore } from '../services/VFSStore';

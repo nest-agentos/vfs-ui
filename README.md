@@ -1,7 +1,7 @@
-# @itookit/vfs-ui
+# @nestos/vfs-ui
 
 原生 DOM 资源浏览组件：树、抽屉、单/双列、搜索、排序、选择和动作执行。
-仅依赖 `@itookit/vfs-core`，不依赖 common、ui-common、LLM 包或 immer。内置 SVG、基础样式和主要控件的中英文文案，不需要 MindOS 的初始化或全局配置。
+仅依赖 `@nestos/vfs-core`，不依赖 common、ui-common、LLM 包或 immer。内置 SVG、基础样式和主要控件的中英文文案，不需要 MindOS 的初始化或全局配置。
 
 0.5.4 提供实例展示配置、抽屉节点声明、展开通知和冒泡资源激活事件；宿主通过公开 CSS 变量和 `toolbarOptions.variant` 调整样式，不需要访问组件内部 DOM。
 
@@ -10,13 +10,13 @@
 ## 安装与文件浏览
 
 ```bash
-npm install @itookit/vfs-ui @itookit/vfs-core
+npm install @nestos/vfs-ui @nestos/vfs-core
 ```
 
 ```ts
-import { createVFSBrowser, fromVFS } from '@itookit/vfs-ui';
-import { createVFS, MemoryBackend } from '@itookit/vfs-core';
-import '@itookit/vfs-ui/style.css';
+import { createVFSBrowser, fromVFS } from '@nestos/vfs-ui';
+import { createVFS, MemoryBackend } from '@nestos/vfs-core';
+import '@nestos/vfs-ui/style.css';
 
 const container = document.querySelector<HTMLElement>('#files')!;
 const { manager } = await createVFS({ rootBackend: new MemoryBackend() });
@@ -43,7 +43,7 @@ await manager.dispose();
 可以直接实现公开的 `BrowserSource`，不创建 VFS：
 
 ```ts
-import { createVFSBrowser, type BrowserNode, type BrowserSource } from '@itookit/vfs-ui';
+import { createVFSBrowser, type BrowserNode, type BrowserSource } from '@nestos/vfs-ui';
 
 const nodes: BrowserNode[] = [
   { id: 'note:1', parentId: null, kind: 'file', label: 'My note' },
@@ -95,8 +95,8 @@ const browser = createVFSBrowser({
 - [开发说明](./AGENTS.md)
 
 ```bash
-pnpm --filter @itookit/vfs-ui build
-pnpm --filter @itookit/vfs-ui test
+pnpm --filter @nestos/vfs-ui build
+pnpm --filter @nestos/vfs-ui test
 ```
 
 ## 独立仓库开发
@@ -111,6 +111,6 @@ pnpm build
 pnpm pack
 ```
 
-`vendor/vfs-core` 是开发用 Git 子模块，固定包含本仓库所需 API 的 core 提交；它不被打入 UI 发布产物。运行时内部依赖仍只有 `@itookit/vfs-core`。当前源码使用该提交新增的文件传输 API；发布 npm 前，必须先发布包含这些 API 的 core 版本，并更新 UI 的版本约束，不能仅依赖同版本号代表内容一致。
+`vendor/vfs-core` 是开发用 Git 子模块，固定包含本仓库所需 API 的 core 提交；它不被打入 UI 发布产物。运行时内部依赖仍只有 `@nestos/vfs-core`。当前源码使用该提交新增的文件传输 API；发布 npm 前，必须先发布包含这些 API 的 core 版本，并更新 UI 的版本约束，不能仅依赖同版本号代表内容一致。
 
 在 itookit 中，本仓库作为 `packages/vfs-ui` 子模块使用，pnpm 仍链接顶层工作区的 vfs-core。首次克隆 itookit 后执行 `git submodule update --init packages/vfs-core packages/vfs-ui`；只在独立开发 UI 时需要初始化 vendor/vfs-core。

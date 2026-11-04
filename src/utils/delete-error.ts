@@ -6,7 +6,7 @@
  * so the failure code is what distinguishes "this entry is read-only" from a real fault.
  * The original error stays available as `cause` for logs.
  */
-import type { FSError } from '@itookit/vfs-core';
+import type { FSError } from '@nestos/vfs-core';
 
 export function describeDeleteError(error: unknown): string {
     const failure = error as Partial<FSError> | undefined;

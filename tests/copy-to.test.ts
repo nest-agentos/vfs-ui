@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { expect, it, vi } from 'vitest';
-import { createVFS, MemoryBackend, FSError } from '@itookit/vfs-core';
+import { createVFS, MemoryBackend, FSError } from '@nestos/vfs-core';
 import { createVFSUI, type VFSUIShell } from '../src';
 
 it('copies through the destination picker and keeps a collision visible without deleting the source', async () => {

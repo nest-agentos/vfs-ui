@@ -10,8 +10,8 @@ export default defineConfig({
         cssCodeSplit: false,
         sourcemap: true,
         rollupOptions: {
-            external: ['@itookit/vfs-core'],
-            output: { globals: { '@itookit/vfs-core': 'ItookitVFSCore' },
+            external: ['@nestos/vfs-core'],
+            output: { globals: { '@nestos/vfs-core': 'ItookitVFSCore' },
                 assetFileNames: asset => asset.name?.endsWith('.css') ? 'style.css' : asset.name ?? 'asset' },
         },
     },

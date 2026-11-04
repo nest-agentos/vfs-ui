@@ -3,7 +3,7 @@
  * @desc Type-safe public event bus implementing IEventPort.
  *       Only for OUTBOUND events to external consumers.
  */
-import { EventBus as CoreEventBus } from '@itookit/vfs-core';
+import { EventBus as CoreEventBus } from '@nestos/vfs-core';
 import type { IEventPort } from '../contracts/ports';
 import type { PublicEventMap, PublicEventName, PublicEventPayload } from '../contracts/events';
 

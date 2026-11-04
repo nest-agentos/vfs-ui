@@ -4,7 +4,7 @@ import { createGitignoreVisibility, filterGitignoredFiles } from '../utils/gitig
  * @desc Bridges IFileSystem events → VFSStore dispatches.
  *       Extracted from VFSUIShell to isolate engine coupling.
  */
-import type { IFileSystem, FSNode, FSEventType, FSEvent } from '@itookit/vfs-core';
+import type { IFileSystem, FSNode, FSEventType, FSEvent } from '@nestos/vfs-core';
 import type { IStatePort, IFileTypePort } from '../contracts/ports';
 import type { VFSNodeUI, TagInfo } from '../contracts/types';
 import { mapFSNodeToUIItem, mapFSNodesToUIItems } from './NodeMapper';

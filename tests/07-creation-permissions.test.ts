@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { afterEach, beforeEach, expect, it, vi } from 'vitest';
-import { createFileSystemSource, createFileSystemView, MemoryBackend, type FileSystemSourceOwner, type FileSystemView } from '@itookit/vfs-core';
+import { createFileSystemSource, createFileSystemView, MemoryBackend, type FileSystemSourceOwner, type FileSystemView } from '@nestos/vfs-core';
 import { createVFSUI, type VFSUIShell } from '../src';
 import { VFSService } from '../src/services/VFSService';
 import { resolveWritableParent } from '../src/utils/creation-guard';

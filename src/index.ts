@@ -1,6 +1,6 @@
 import './styles/index.css';
 import { VFSUIShell, type VFSUIShellOptions } from './shell/VFSUIShell';
-import type { IFileSystem } from '@itookit/vfs-core';
+import type { IFileSystem } from '@nestos/vfs-core';
 export type VFSUIOptions = VFSUIShellOptions;
 export const createVFSUI = (options: VFSUIOptions, fs: IFileSystem): VFSUIShell => new VFSUIShell(options, fs);
 export { VFSUIShell };

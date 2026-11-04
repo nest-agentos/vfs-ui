@@ -14,7 +14,7 @@ import {
     generateShortUUID,
 } from '../utils/local';
 import type { BrowserBaseOptions, VFSRowActionOptions } from '../contracts/options';
-import type { IFileSystem, FSNode } from '@itookit/vfs-core';
+import type { IFileSystem, FSNode } from '@nestos/vfs-core';
 
 import type {
   VFSNodeUI,

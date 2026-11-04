@@ -3,7 +3,7 @@ import { afterEach, expect, it, vi } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createVFS, MemoryBackend } from '@itookit/vfs-core';
+import { createVFS, MemoryBackend } from '@nestos/vfs-core';
 import { createVFSUI, createVFSBrowser, VFS_DOM_EVENTS, type VFSUIOptions, type BrowserNode } from '../src';
 const appearanceCSS = readFileSync(resolve(dirname(fileURLToPath(import.meta.url)), '../src/styles/list-appearance.css'), 'utf8');
 

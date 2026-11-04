@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import {afterEach, expect, it, vi} from 'vitest';
-import {FSError} from '@itookit/vfs-core';
+import {FSError} from '@nestos/vfs-core';
 import {createDirectoryList, refreshDirectoryList, relocateDirectoryList} from '../src/index';
 
 afterEach(() => document.body.replaceChildren());

@@ -5,7 +5,7 @@ import { decorateButton } from './controls';
 import { formatDisplayLabel } from '../utils/display-label';
 import { formatFileSize } from '../utils/file-size';
 import { DirectorySelection, type DirectoryBulkAction } from './directory-selection';
-import { FSError, matchesKeywords, searchKeywords } from '@itookit/vfs-core';
+import { FSError, matchesKeywords, searchKeywords } from '@nestos/vfs-core';
 import { createDirectoryBreadcrumbs, type DirectoryBreadcrumb } from './directory-breadcrumbs';
 
 export interface DirectoryEntry {

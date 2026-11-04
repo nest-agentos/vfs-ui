@@ -3,9 +3,9 @@ import { defaultPresentation, type VFSPresentation } from '../contracts/presenta
  * @file vfs-ui/services/VFSService.ts
  * @desc Data mutation service implementing IDataOperationPort.
  */
-import type { IFileSystem, FSNode } from '@itookit/vfs-core';
+import type { IFileSystem, FSNode } from '@nestos/vfs-core';
 import { buildRenamedFilename, formatDefaultFileTitle } from '../utils/local';
-import { FSError, normalizeVirtualPath, transferFileSystemEntry } from '@itookit/vfs-core';
+import { FSError, normalizeVirtualPath, transferFileSystemEntry } from '@nestos/vfs-core';
 import type { IDataOperationPort } from '../contracts/ports';
 
 export interface VFSServiceDependencies {
