@@ -56,3 +56,14 @@
 .vfs-directory-item--card > .vfs-directory-item__children > .vfs-directory-action:hover:not(:disabled) { background: var(--mm-sidebar-bg, #f1f5f9); }
 
 .vfs-directory-item--card > .vfs-directory-item__children > .vfs-directory-action.is-active { background: var(--vfs-active-bg, #e8edff); color: var(--primary-color, #4f46e5); border-left-color: currentColor; }
+
+/* Every resource menu uses the existing context-menu path and a reachable touch target. */
+.vfs-node-item__menu { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 28px; width: 28px; height: 28px; padding: 4px; border: 0; border-radius: 5px; background: transparent; color: var(--text-secondary, #64748b); opacity: 0; cursor: pointer; }
+.vfs-node-item__menu svg { width: 18px; height: 18px; }
+.vfs-node-item__main-row:hover .vfs-node-item__menu,
+.vfs-node-item__main-row:focus-within .vfs-node-item__menu { opacity: 1; }
+.vfs-node-item__menu:hover { background: var(--vfs-active-bg, #e8edff); }
+.vfs-node-item__menu:focus-visible { outline: 2px solid var(--primary-color, #6366f1); }
+@media (hover: none), (pointer: coarse), (max-width: 768px) {
+    .vfs-node-item__menu { opacity: 1; flex-basis: 44px; width: 44px; min-height: 44px; }
+}

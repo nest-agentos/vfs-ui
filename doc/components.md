@@ -277,3 +277,8 @@ windowManagement: {
 createVFSBrowser 的 BrowserNode.deletable 开放资源删除。deletion.preview 返回影响说明、阻碍、选择项和不透明 data，deletion.remove 接收已确认的快照和选择集合；宿主仍需在提交时核验状态。deletion.confirm(node, preview, signal) 可替代默认共享弹窗，返回选择集合表示确认，undefined 表示取消。默认弹窗和自定义 callback 二选一，blocked 预览即使被自定义 callback 确认也不会执行删除。
 
 createVFSUI 的 confirmDelete(node):Promise<boolean> 供行内删除替换第二步确认。提供时第一次点击删除即调用 callback，不再要求点行内确认图标；未提供则继续原两次点击。返回 false 保留资源，返回 true 才执行 onQuickDelete 或普通文件删除。onQuickDelete 是删除生命周期回调，不应再重复询问。
+
+
+### 条目菜单的触屏入口
+
+普通文件和目录默认提供使用现有 `ContextMenuHandler` 的“更多”按钮，点击不打开资源；桌面在当前行悬停或键盘聚焦时显示，无悬停、粗指针或不超过 768px 的布局常显，并提供至少 44×44px 的点按区域。图标与文案沿用 presentation。只读和固定入口的动作继续由现有行策略及执行前核对决定，菜单按钮本身不授予写权限；固定导航入口默认不增加按钮，宿主的 `metadata.custom.navigationMenu: true` 可保留已有显式入口，`false` 可隐藏按钮。

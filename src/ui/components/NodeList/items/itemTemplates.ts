@@ -57,6 +57,14 @@ const createFavoriteHTML = (active?: boolean, ui = defaultPresentation): string 
   return `<button type="button" class="vfs-node-item__action-btn vfs-node-item__favorite-btn" data-action="favorite-toggle" aria-pressed="${active}" title="${label}" aria-label="${label}">${ui.icon('favorite')}</button>`;
 };
 
+/** Menus expose existing actions; write permissions remain owned by the row policy and command path. */
+const createItemMenuHTML = (node: VFSNodeUI, policy: RowPolicy, ui: VFSPresentation, directory = false): string => {
+  const declared = node.metadata.custom.navigationMenu;
+  if (declared === false || policy.fixed && declared !== true) return '';
+  const label = escapeHTML(ui.t('vfs.columns.more'));
+  return `<button type="button" class="vfs-node-item__menu${directory ? ' vfs-directory-item__menu' : ''}" data-action="item-menu" aria-haspopup="menu" title="${label}" aria-label="${label}">${ui.icon('more')}</button>`;
+};
+
 export interface FileItemProps {
   presentation?: VFSPresentation;
   favorite?: boolean;
@@ -131,7 +139,7 @@ export const createFileItemHTML = (
 
   const displayIcon = icon || ui.fileIcon(title);
 
-  const menuHTML = custom.navigationMenu ? `<button type="button" class="vfs-node-item__action-btn" data-action="item-menu" aria-label="${escapeHTML(ui.t('vfs.columns.more'))}">⋯</button>` : '';
+  const menuHTML = createItemMenuHTML(file, policy, ui);
   const favoriteHTML = createFavoriteHTML(props.favorite, ui);
   const hasActions = deleteBtnHTML || outlineToggleHTML || menuHTML || favoriteHTML;
   const actionsHTML = hasActions
@@ -235,7 +243,7 @@ export const createDirectoryItemHTML = (
         </div>
         ${createFavoriteHTML(props.favorite, ui)}
         ${policy.inlineDelete ? createQuickDeleteHTML(props.isConfirmingDelete, ui) : ''}
-        ${metadata.custom.navigationMenu ? `<button type="button" class="vfs-directory-item__menu" data-action="item-menu" aria-label="${escapeHTML(ui.t('vfs.columns.more'))}">⋯</button>` : ''}
+        ${createItemMenuHTML(dir, policy, ui, true)}
         ${policy.inlineDelete ? createQuickDeleteHTML(props.isConfirmingDelete, ui, true) : ''}
       </div>
       <div class="vfs-directory-item__children" style="${isExpanded ? '' : 'display:none;'}"></div>
