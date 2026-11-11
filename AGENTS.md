@@ -88,3 +88,5 @@ inline 搜索聚焦时由 ToolbarOverflow 将原按钮与筛选槽临时移入�
 严格 `directoryPreview` 可注入 `read(directory)` 获取已筛选、排序的有界预览；EngineAdapter 仅在需要读取该目录时调用，未打开目录不读取。宿主提供最多 limit+1 项判断溢出，完整页面仍按原目录身份读取全部/分页内容；库不推导应用的存储查询。
 
 BrowserDeletionPreview.details accepts optional plain-text diagnostics with a caller-provided label. Default confirmation renders them in a collapsed details element using textContent; business providers supply names and explanations without replacing the shared confirmation flow.
+
+时间显示复用 @nestos/ui-common 的浏览器本地格式化工具（含实际 UTC 偏移）；本库仅依赖 vfs-core 与零依赖的 ui-common，不引入应用宿主或全局宿主时区配置。

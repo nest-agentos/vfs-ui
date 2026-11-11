@@ -1,3 +1,4 @@
+import {formatDateTime} from '@nestos/ui-common';
 // @vitest-environment jsdom
 import {afterEach, expect, it, vi} from 'vitest';
 import {FSError} from '@nestos/vfs-core';
@@ -13,7 +14,7 @@ it('shows creation time last, sorts timestamps chronologically and keeps missing
         {id: '/d', name: 'D', type: 'file'},
     ], presentation: {locale: 'en-US'}});
     expect([...list.querySelectorAll('th')].map(cell => cell.dataset.column)).toEqual(['name', 'size', 'modified', 'type', 'created']);
-    expect(list.querySelector('[data-resource-id="/b"] td:last-child')?.textContent).toBe(new Date(1700000000000).toLocaleString('en-US'));
+    expect(list.querySelector('[data-resource-id="/b"] td:last-child')?.textContent).toBe(formatDateTime(1700000000000,'en-US'));
     expect(list.querySelector('[data-resource-id="/c"] td:last-child')?.textContent).toBe('—');
     expect(list.querySelector('[data-resource-id="/d"] td:last-child')?.textContent).toBe('—');
     const sort = list.querySelector<HTMLButtonElement>('th[data-column="created"] button')!;

@@ -69,7 +69,8 @@
     "node": ">=16.0.0"
   },
   "dependencies": {
-    "@nestos/vfs-core": "^0.5.1"
+    "@nestos/vfs-core": "^0.5.1",
+    "@nestos/ui-common": "^0.5.1"
   },
   "peerDependencies": {},
   "devDependencies": {

@@ -1,3 +1,4 @@
+import {formatDateTime} from '@nestos/ui-common';
 import { DirectoryToolbar } from './directory-toolbar';
 import { installColumnResize } from './column-resize';
 import { resolveDirectoryPresentation, type DirectoryPresentation, type DirectoryPresentationOptions } from './presentation';
@@ -45,7 +46,7 @@ export async function refreshDirectoryList(panel: HTMLElement): Promise<void> {
     const list = panel.matches('.workbench-directory') ? panel : panel.querySelector<HTMLElement>('.workbench-directory');
     if (list) await refreshers.get(list)?.();
 }
-const date = (presentation: DirectoryPresentation, value?: string | number) => value !== undefined && Number.isFinite(new Date(value).getTime()) ? new Date(value).toLocaleString(presentation.locale) : '—';
+const date = (presentation: DirectoryPresentation, value?: string | number) => value !== undefined && Number.isFinite(new Date(value).getTime()) ? formatDateTime(new Date(value), presentation.locale) : '—';
 
 /** Display labels are bounded; full names and creation time remain in the tooltip. */
 export function createDirectoryList(input: DirectoryListOptions): HTMLElement {

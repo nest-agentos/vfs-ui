@@ -1,3 +1,4 @@
+import {formatDateTime} from '@nestos/ui-common';
 import { defaultPresentation, type VFSPresentation } from '../../../../contracts/presentation';
 import { formatFileSize } from '../../../../utils/file-size';
 import {formatDisplayLabel} from '../../../../utils/display-label';
@@ -174,7 +175,7 @@ export const createFileItemHTML = (
               </div>
               <div class="vfs-node-item__secondary-right">
                 ${file.presentation?.fileDetails ? `<span class="vfs-node-item__size" title="${file.metadata.size === undefined ? '—' : `${file.metadata.size} B`}">${formatFileSize(file.metadata.size)}</span>` : ''}
-                <span class="vfs-node-item__timestamp" title="${new Date(lastModified).toLocaleString()}">${formatRelativeTime(lastModified)}</span>
+                <span class="vfs-node-item__timestamp" title="${formatDateTime(new Date(lastModified))}">${formatRelativeTime(lastModified)}</span>
                 ${badgesHTML}
               </div>
             </div>
