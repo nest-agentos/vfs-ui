@@ -1,7 +1,7 @@
 # @nestos/vfs-ui
 
 原生 DOM 资源浏览组件：树、抽屉、单/双列、搜索、排序、选择和动作执行。
-仅依赖 `@nestos/vfs-core`，不依赖 common、ui-common、LLM 包或 immer。内置 SVG、基础样式和主要控件的中英文文案，不需要 MindOS 的初始化或全局配置。
+仅依赖 `@nestos/vfs-core`，不依赖 common、ui-common、LLM 包或 immer。内置 SVG、基础样式和主要控件的中英文文案，不需要 NestOS 的初始化或全局配置。
 
 0.5.4 提供实例展示配置、抽屉节点声明、展开通知和冒泡资源激活事件；宿主通过公开 CSS 变量和 `toolbarOptions.variant` 调整样式，不需要访问组件内部 DOM。
 
@@ -88,7 +88,7 @@ const browser = createVFSBrowser({
 
 `listItems` 投影隐藏容器成员时，可通过顶层 `navigationChildren(node)` 返回要加载的直接子容器 ID。单栏和双栏均在展开、恢复展开状态及刷新时准备这些成员，保留容器折叠状态，不读取未展开的分支；旧 `columns.navigationChildren` 继续兼容，顶层配置优先。
 
-原先从 common/ui-common 导入的 Heading、TaskCounts、菜单和标签工厂类型，现可直接从 vfs-ui 导入。原有结构兼容实现继续可用。需要跟随宿主的语言、图标或启动统计时，通过 `presentation` 注入；MindOS 的示例在 `ui/app-shell/src/browser/vfs-presentation.ts`。
+原先从 common/ui-common 导入的 Heading、TaskCounts、菜单和标签工厂类型，现可直接从 vfs-ui 导入。原有结构兼容实现继续可用。需要跟随宿主的语言、图标或启动统计时，通过 `presentation` 注入；NestOS 的示例在 `ui/app-shell/src/browser/vfs-presentation.ts`。
 
 - [接口与组件](./doc/components.md)
 - [边界与迁移记录](https://github.com/mushuanli/itookit/blob/main/doc/design/vfs-ui-boundary-review.md)
