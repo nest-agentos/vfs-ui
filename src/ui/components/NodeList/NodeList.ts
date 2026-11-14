@@ -327,6 +327,10 @@ export class NodeList extends BaseComponent<NodeListState> {
     this.mainContainerEl.classList.add('vfs-node-list--navigator');
     const title = this.container.querySelector('.vfs-node-list__title-bar')!;
     const search = this.container.querySelector('.vfs-node-list__header')!;
+    if (options.navigationHeader?.searchLeading) {
+      const leading = document.createElement('div'); leading.className = 'vfs-node-list__search-leading';
+      leading.append(options.navigationHeader.searchLeading); search.prepend(leading);
+    }
     if (options.navigationHeader?.layout === 'inline' && options.titleHeader && options.toolbarContainer) {
       options.titleHeader.classList.add('vfs-node-list__inline-custom-actions');
       search.append(options.titleHeader); title.setAttribute('hidden', '');

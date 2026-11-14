@@ -110,6 +110,10 @@
 .vfs-node-list .vfs-node-list__new-btn.vfs-node-list__new-btn--icon-only { flex: 0 0 44px; width: 44px; padding: 6px; justify-content: center; }
 .vfs-node-list .vfs-node-list__new-btn.vfs-node-list__new-btn--icon-only .vfs-node-list__button-label { display: none; }
 .vfs-node-list--inline-actions > .vfs-node-list__header { overflow: visible; gap: 4px; }
+.vfs-node-list__search-leading { display: flex; flex: 0 0 auto; align-items: center; }
+.vfs-node-list__search-leading > button { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; width: 44px; height: 44px; padding: 8px; border: 0; border-radius: 8px; background: transparent; color: var(--text-secondary, #64748b); cursor: pointer; }
+.vfs-node-list__search-leading > button:hover { background: var(--vfs-active-bg, #eef2ff); }
+.vfs-node-list__search-leading > button:focus-visible { outline: 2px solid var(--primary-color, #6366f1); outline-offset: -2px; }
 .vfs-node-list--inline-actions .vfs-node-list__inline-custom-actions { flex: 0 0 auto; width: auto; }
 .vfs-node-list--inline-actions > .vfs-node-list__title-bar[hidden] { display: none; }
 .vfs-node-list--navigator.vfs-node-list--inline-actions > .vfs-node-list__header > .vfs-node-list__new-controls { margin: 0; gap: 4px; }

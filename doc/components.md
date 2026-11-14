@@ -266,6 +266,8 @@ windowManagement: {
 
 ### 通用侧栏与筛选弹层
 
+`navigationHeader.searchLeading` 接收宿主控件原节点，固定放在搜索框左侧，与搜索及工具栏同行；搜索聚焦时保留该入口。
+
 `Sidebar.mountContext(element)` 将宿主的上下文选择控件与导航页签、窗口入口放在同一标题行；控件复用原节点，长名称在可用宽度内收缩。
 
 `navigationHeader.layout: 'inline'` 配合 `titleHeader` 和其内部的 `toolbarContainer` 时，将原自定义动作行移到搜索框旁，筛选入口放在该工具栏之前，隐藏腾空的标题行。

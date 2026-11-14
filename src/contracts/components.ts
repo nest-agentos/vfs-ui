@@ -35,6 +35,8 @@ export interface VFSNavigationHeader {
     /** Inline search temporarily moves actions into the menu while focused. Defaults to true. */
     expandSearch?: boolean;
     primaryAction?: string;
+    /** Keep a host control immediately before the search input. */
+    searchLeading?: HTMLElement;
     filter?: HTMLElement;
     summary?: HTMLElement;
     results?: HTMLElement;
