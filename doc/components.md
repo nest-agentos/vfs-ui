@@ -266,6 +266,10 @@ windowManagement: {
 
 ### 通用侧栏与筛选弹层
 
+`Sidebar.mountContext(element)` 将宿主的上下文选择控件与导航页签、窗口入口放在同一标题行；控件复用原节点，长名称在可用宽度内收缩。
+
+`navigationHeader.layout: 'inline'` 配合 `titleHeader` 和其内部的 `toolbarContainer` 时，将原自定义动作行移到搜索框旁，筛选入口放在该工具栏之前，隐藏腾空的标题行。
+
 `Sidebar({container, title, state, changed, windowManagement, presentation})` 管理导航页签、键盘切换、内容节点保留和宽度拖拽。`navigation` 是初始内容槽，`addDrawer(kind, label, body, toggle)` 添加互斥视图；`selectView` 切换，`setViewChanged` 观察。`state` 仅含可选 `width/view`，`changed` 将展示状态交给宿主保存。辅助内容可传入隐藏的 `auxiliary` 槽；有窗口回调时统一显示入口。公开根类为 `vfs-sidebar`，宽度通过 `--vfs-sidebar-width` 控制；宿主不应依赖内部元素或样式。
 
 `FilterPanel({label, iconOnly, iconHTML}, presentation)` 提供 `trigger/summary/content` 公共槽及 `update(chips)`、`destroy()`。宿主仅向 `content` 添加业务筛选控件，并为每个 chip 提供 `label/remove()`；库负责文本转义、弹层定位、手机布局、展开状态及关闭后的焦点恢复。

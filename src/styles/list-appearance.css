@@ -110,6 +110,8 @@
 .vfs-node-list .vfs-node-list__new-btn.vfs-node-list__new-btn--icon-only { flex: 0 0 44px; width: 44px; padding: 6px; justify-content: center; }
 .vfs-node-list .vfs-node-list__new-btn.vfs-node-list__new-btn--icon-only .vfs-node-list__button-label { display: none; }
 .vfs-node-list--inline-actions > .vfs-node-list__header { overflow: visible; gap: 4px; }
+.vfs-node-list--inline-actions .vfs-node-list__inline-custom-actions { flex: 0 0 auto; width: auto; }
+.vfs-node-list--inline-actions > .vfs-node-list__title-bar[hidden] { display: none; }
 .vfs-node-list--navigator.vfs-node-list--inline-actions > .vfs-node-list__header > .vfs-node-list__new-controls { margin: 0; gap: 4px; }
 .vfs-node-list--inline-actions .vfs-node-list__new-btn.vfs-node-list__new-btn--icon-only { flex-basis: 32px; width: 32px; }
 @media (hover: none), (pointer: coarse) {

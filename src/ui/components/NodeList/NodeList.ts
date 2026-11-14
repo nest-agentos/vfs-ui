@@ -327,10 +327,16 @@ export class NodeList extends BaseComponent<NodeListState> {
     this.mainContainerEl.classList.add('vfs-node-list--navigator');
     const title = this.container.querySelector('.vfs-node-list__title-bar')!;
     const search = this.container.querySelector('.vfs-node-list__header')!;
+    if (options.navigationHeader?.layout === 'inline' && options.titleHeader && options.toolbarContainer) {
+      options.titleHeader.classList.add('vfs-node-list__inline-custom-actions');
+      search.append(options.titleHeader); title.setAttribute('hidden', '');
+    }
     if (!options.toolbarContainer) (options.navigationHeader?.layout === 'inline' ? search : title).append(this.newControlsEl);
     this.mainContainerEl.classList.toggle('vfs-node-list--inline-actions', options.navigationHeader?.layout === 'inline');
     if (options.navigationHeader?.filter) {
-      if (options.navigationHeader.layout === 'inline' && !options.toolbarContainer) search.insertBefore(options.navigationHeader.filter, this.newControlsEl);
+      if (options.navigationHeader.layout === 'inline' && options.titleHeader?.contains(options.toolbarContainer ?? null))
+        options.toolbarContainer!.before(options.navigationHeader.filter);
+      else if (options.navigationHeader.layout === 'inline' && !options.toolbarContainer) search.insertBefore(options.navigationHeader.filter, this.newControlsEl);
       else search.append(options.navigationHeader.filter);
     }
     if (options.navigationHeader?.summary) search.after(options.navigationHeader.summary);

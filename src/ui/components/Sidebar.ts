@@ -52,6 +52,11 @@ export class Sidebar {
         this.addDrawer('navigation', options.navigationLabel ?? options.title, this.navigation); this.setupResize();
     }
     get activeView(): string { return this.views.has(this.snapshot.view ?? '') ? this.snapshot.view! : 'navigation'; }
+    mountContext(element: HTMLElement): void {
+        this.header.classList.add('vfs-sidebar__header--context');
+        const slot = document.createElement('div'); slot.className = 'vfs-sidebar__context';
+        slot.append(element); this.header.querySelector('.vfs-sidebar__context')?.remove(); this.header.prepend(slot);
+    }
     setViewChanged(listener: (kind: string) => void): void { this.changed = listener; }
     selectView(kind: string): void {
         if (!this.views.has(kind) || kind === this.activeView) return;
