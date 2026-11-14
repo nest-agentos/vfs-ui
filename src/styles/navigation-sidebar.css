@@ -1,7 +1,7 @@
 .vfs-sidebar__header { display: flex; flex: 0 0 auto; align-items: center; min-height: 48px; gap: 4px; padding: 0 8px; border-bottom: 1px solid var(--mm-border-color, #e5e7eb); }
 .vfs-sidebar__title { flex: 1; min-width: 0; font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .vfs-sidebar__views { display: flex; flex: 1; min-width: 0; align-self: stretch; gap: 8px; }
-.vfs-sidebar__context { flex: 0 1 auto; min-width: 0; }
+.vfs-sidebar__context { flex: 0 1 auto; min-width: 0; max-width: var(--vfs-sidebar-context-max-width, 120px); }
 .vfs-sidebar__context > * { width: 100%; min-width: 0; }
 .vfs-sidebar__header--context > .vfs-sidebar__views { flex: 1 0 auto; gap: 0; }
 .vfs-sidebar__header--context > .vfs-sidebar__title { flex: 0 0 auto; }
