@@ -14,6 +14,8 @@ export interface DirectoryPreviewOptions {
 
 /** A fixed navigation action; its active state is independent of mutable resource selection. */
 export interface DirectoryAction {
+    /** Row type to attach the action to. Defaults to directories. */
+    itemType?: 'directory' | 'file';
     /** Insert after the direct child with this resource ID; falls back to the end. */
     afterChildId?: (parentPath: string) => string | undefined;
     label: string;

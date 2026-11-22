@@ -9,7 +9,8 @@ export class DirectoryActions {
         private readonly runner: ActionRunner, private readonly onActive: () => void) {}
 
     render(): void {
-        for (const row of this.body.querySelectorAll<HTMLElement>('[data-item-type="directory"]')) {
+        const itemType = this.action.itemType ?? 'directory';
+        for (const row of this.body.querySelectorAll<HTMLElement>(`[data-item-type="${itemType}"]`)) {
             const path = row.dataset.itemId!;
             if (!this.action.visible(path)) continue;
             const container = row.querySelector(row.classList.contains('vfs-directory-item--card')
