@@ -30,7 +30,13 @@ export class DirectoryActions {
             const icon = document.createElement('span'); icon.className = 'vfs-directory-action__icon';
             icon.setAttribute('aria-hidden', 'true'); icon.innerHTML = this.action.icon; button.append(icon);
         }
-        const label = document.createElement('span'); label.textContent = this.action.label; button.append(label);
+        if (this.action.icon && this.action.iconOnly) {
+            button.classList.add('vfs-directory-action--icon-only');
+            button.title = this.action.label;
+            button.setAttribute('aria-label', this.action.label);
+        } else {
+            const label = document.createElement('span'); label.textContent = this.action.label; button.append(label);
+        }
         button.draggable = false;
         for (const type of ['mousedown', 'pointerdown', 'keydown', 'contextmenu', 'dragstart']) {
             button.addEventListener(type, event => {

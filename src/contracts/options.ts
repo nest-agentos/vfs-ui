@@ -21,6 +21,8 @@ export interface DirectoryAction {
     label: string;
     /** Trusted icon markup supplied by the host. */
     icon?: string;
+    /** With an icon, use the label as a tooltip and accessible name. */
+    iconOnly?: boolean;
     placement?: 'after-first';
     active?(path: string): boolean;
     visible(path: string): boolean;

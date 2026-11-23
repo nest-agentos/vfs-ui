@@ -1470,6 +1470,8 @@
 .vfs-dir-preview { max-width: 400px; max-height: 300px; overflow: auto; padding: 12px; overflow-wrap: anywhere; }
 .vfs-directory-action { margin-left: auto; flex-shrink: 0; padding: 4px 8px; border: 1px solid currentColor; border-radius: 4px; background: transparent; color: var(--color-primary-default); cursor: pointer; }
 .vfs-directory-action:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.vfs-directory-action--icon-only { display: inline-flex; align-items: center; justify-content: center; }
+.vfs-directory-action--icon-only .vfs-directory-action__icon { margin-right: 0; }
 .vfs-directory-item__empty-placeholder { display: block; padding: 8px 16px; color: var(--vfs-text-secondary, #666); font-size: 12px; }
 .vfs-file-outline__list { list-style: none; margin: 0; padding: 0; }
 .vfs-move-modal__folder-children { border-left: 1px solid var(--color-gray-200); }
